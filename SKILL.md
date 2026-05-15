@@ -23,28 +23,30 @@ Default to evidence-based scoring. Do not infer attitude, diligence, or collabor
 
 ## Quick Start
 
+When this skill is loaded, resolve `<skill-dir>` as the directory that contains this `SKILL.md`. Do not use a hardcoded install path, because different skill managers may install the skill under different directories.
+
 From the target repository root, run:
 
 ```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7
+python3 <skill-dir>/scripts/weekly_kpi_collect.py --days 7
 ```
 
 Use `--author` to evaluate one person:
 
 ```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7 --author "Alice"
+python3 <skill-dir>/scripts/weekly_kpi_collect.py --days 7 --author "Alice"
 ```
 
 Use `--base main` when the repo has a clear mainline branch and the week's work is on a feature branch:
 
 ```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7 --base main
+python3 <skill-dir>/scripts/weekly_kpi_collect.py --days 7 --base main
 ```
 
 ## Workflow
 
 1. Confirm the repository root with `git rev-parse --show-toplevel`.
-2. Collect evidence with `scripts/weekly_kpi_collect.py`.
+2. Collect evidence with `<skill-dir>/scripts/weekly_kpi_collect.py`, where `<skill-dir>` is the directory containing this `SKILL.md`.
 3. Run project quality checks when available and safe:
    - Node: `npm test`, `npm run lint`, `npm run typecheck` when scripts exist.
    - Python: `pytest`, `ruff check`, `mypy` when configured.

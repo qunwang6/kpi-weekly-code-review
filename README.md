@@ -88,12 +88,12 @@ npx skills add https://github.com/qunwang6/kpi-weekly-code-review
 使用 kpi-weekly-code-review，评估 2026-05-08 以来的代码提交，输出中文 KPI 评分报告。
 ```
 
-在 Claude Code 或 Codex 中，agent 会按需运行 `scripts/weekly_kpi_collect.py` 收集 git 证据，并结合可用的测试、lint、typecheck、diff 风险和项目上下文给出结论。
+在 Claude Code 或 Codex 中，agent 会按需从当前 skill 安装目录运行 `scripts/weekly_kpi_collect.py` 收集 git 证据，并结合可用的测试、lint、typecheck、diff 风险和项目上下文给出结论。
 
-如需手动采集证据，也可以在目标仓库根目录运行：
+如需手动采集证据，也可以在目标仓库根目录运行。请把 `<skill-dir>` 替换为本机实际安装目录，也就是包含 `SKILL.md` 的 `kpi-weekly-code-review` 目录：
 
 ```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7
+python3 <skill-dir>/scripts/weekly_kpi_collect.py --days 7
 ```
 
 ## 推荐评估流程
@@ -104,7 +104,7 @@ python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_colle
    git rev-parse --show-toplevel
    ```
 
-2. 运行 `weekly_kpi_collect.py` 收集最近一周证据。
+2. 运行当前 skill 安装目录下的 `scripts/weekly_kpi_collect.py` 收集最近一周证据。
 
 3. 根据项目类型运行可用的质量检查，例如：
 
