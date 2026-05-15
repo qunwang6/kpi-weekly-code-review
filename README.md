@@ -62,34 +62,38 @@ npx skills add https://github.com/qunwang6/kpi-weekly-code-review
 
 ## 使用方式
 
-在要评估的目标仓库根目录运行采集脚本：
+安装后，在 Claude Code 或 Codex 中打开要评估的代码仓库，然后直接用自然语言触发该 skill。
 
-```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7
+评估当前项目最近一周的整体表现：
+
+```text
+使用 kpi-weekly-code-review，分析当前项目最近一周的代码提交和质量，按 KPI 绩效标准给出评分、证据和改进建议。
 ```
 
 评估指定开发者：
 
-```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7 --author "Alice"
+```text
+使用 kpi-weekly-code-review，只评估 Alice 最近 7 天的提交，结合测试结果和 diff 风险给出 KPI 等级。
 ```
 
-如果当前分支是一周工作的 feature branch，可以指定主干分支做 diff 汇总：
+评估当前 feature branch 相对主干的工作：
 
-```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7 --base main
+```text
+使用 kpi-weekly-code-review，基于当前分支相对 main 的变更，做一次周度代码 KPI review。
 ```
 
-输出 JSON 方便后续处理：
+指定时间范围：
 
-```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7 --json
+```text
+使用 kpi-weekly-code-review，评估 2026-05-08 以来的代码提交，输出中文 KPI 评分报告。
 ```
 
-指定明确起始日期：
+在 Claude Code 或 Codex 中，agent 会按需运行 `scripts/weekly_kpi_collect.py` 收集 git 证据，并结合可用的测试、lint、typecheck、diff 风险和项目上下文给出结论。
+
+如需手动采集证据，也可以在目标仓库根目录运行：
 
 ```bash
-python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --since 2026-05-08
+python3 /Users/qun/.codex/skills/kpi-weekly-code-review/scripts/weekly_kpi_collect.py --days 7
 ```
 
 ## 推荐评估流程
