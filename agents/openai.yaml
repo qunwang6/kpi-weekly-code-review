@@ -1,0 +1,4 @@
+interface:
+  display_name: "KPI Weekly Code Review"
+  short_description: "按周评估代码提交、质量和协作表现，输出 A/B/C 绩效评分。"
+  default_prompt: "分析当前项目最近一周的代码提交和质量，按 KPI 绩效标准给出评分、证据和改进建议。"
